@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wow2vows - Where Hearts Meet Heritage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "🌸";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #ff6b6b;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(255,107,107,0.9), rgba(78,205,196,0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8f9fa" width="1200" height="600"/><g fill="%23e9ecef" opacity="0.5"><circle cx="200" cy="150" r="80"/><circle cx="800" cy="400" r="60"/><circle cx="1000" cy="200" r="100"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .intro {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .cta {
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.6);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Statistics Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .story-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .story-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .story-author {
+            font-weight: 600;
+            color: #ff6b6b;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b6b;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        .language-selector {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 15px;
+            z-index: 50;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelect" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+            <option value="ta">தமிழ்</option>
+            <option value="te">తెలుగు</option>
+        </select>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo" data-lang="logo">wow2vows</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-lang="nav-home">Home</a></li>
+                <li><a href="#features" data-lang="nav-features">Features</a></li>
+                <li><a href="#how-it-works" data-lang="nav-how">How It Works</a></li>
+                <li><a href="#stories" data-lang="nav-stories">Success Stories</a></li>
+                <li><a href="#contact" data-lang="nav-contact">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline" onclick="openModal('loginModal')" data-lang="login">Login</a>
+                <a href="#" class="btn btn-primary" onclick="openModal('registerModal')" data-lang="register">Register</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 data-lang="hero-title">Where Hearts Meet Heritage</h1>
+            <p class="tagline" data-lang="hero-tagline">Connecting Souls, Honoring Traditions</p>
+            <p class="intro" data-lang="hero-intro">
+                At wow2vows, we believe that finding your life partner should honor both your values and your aspirations. Our community-centered platform brings together modern technology with time-tested traditions, creating a trusted space where families and individuals can connect authentically.
+            </p>
+            <a href="#" class="btn cta" onclick="openModal('registerModal')" data-lang="hero-cta">Begin Your Journey</a>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="membersCount">10,000+</h3>
+                    <p data-lang="stat-members">Verified Members</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="successCount">500+</h3>
+                    <p data-lang="stat-success">Success Stories</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="communitiesCount">25+</h3>
+                    <p data-lang="stat-communities">Communities Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3 id="locationsCount">100+</h3>
+                    <p data-lang="stat-locations">Cities & Towns</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title" data-lang="features-title">Why Choose wow2vows?</h2>
+            <p class="section-subtitle" data-lang="features-subtitle">
+                Experience the perfect blend of tradition and technology with features designed for modern Indian families
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3 data-lang="feature1-title">Privacy-First Local Hosting</h3>
+                    <p data-lang="feature1-desc">Your data stays in India with complete sovereignty. No international data transfers, maximum privacy protection.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍👩‍👧‍👦</span>
+                    <h3 data-lang="feature2-title">Family Circle Integration</h3>
+                    <p data-lang="feature2-desc">Dedicated family dashboard with appropriate permissions. Healthy boundaries between individual and family involvement.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🏘️</span>
+                    <h3 data-lang="feature3-title">Community-Based Matching</h3>
+                    <p data-lang="feature3-desc">Advanced filters for regional preferences, language, cultural practices, and community backgrounds.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">✅</span>
+                    <h3 data-lang="feature4-title">Multi-Level Verification</h3>
+                    <p data-lang="feature4-desc">Comprehensive verification including ID, education, employment, and optional family references for trust.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3 data-lang="feature5-title">Secure Communication</h3>
+                    <p data-lang="feature5-desc">End-to-end encrypted messaging with regional language support and structured interest expression.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3 data-lang="feature6-title">Modern Lifestyle Matching</h3>
+                    <p data-lang="feature6-desc">Smart compatibility considering career goals, lifestyle, travel aspirations, and personal interests.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🌐</span>
+                    <h3 data-lang="feature7-title">Multi-Language Support</h3>
+                    <p data-lang="feature7-desc">Full platform in Hindi, English, and regional languages with culturally appropriate content.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3 data-lang="feature8-title">Mobile-First Design</h3>
+                    <p data-lang="feature8-desc">Intuitive interface optimized for smartphones with offline browsing and instant notifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title" data-lang="how-title">How It Works</h2>
+            <p class="section-subtitle" data-lang="how-subtitle">
+                Simple, respectful, and effective - find your perfect match in just four steps
+            </p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 data-lang="step1-title">Create Your Profile</h3>
+                    <p data-lang="step1-desc">Share your story, values, and aspirations. Upload verified documents for trust and authenticity.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 data-lang="step2-title">Get Verified</h3>
+                    <p data-lang="step2-desc">Complete our multi-step verification process including ID, education, and employment confirmation.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 data-lang="step3-title">Browse & Connect</h3>
+                    <p data-lang="step3-desc">Use advanced filters to find compatible matches. Send interests and start meaningful conversations.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 data-lang="step4-title">Meet Your Match</h3>
+                    <p data-lang="step4-desc">Take your time getting to know each other with family involvement as desired. Begin your beautiful journey together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="stories" class="success-stories">
+        <div class="container">
+            <h2 class="section-title" data-lang="stories-title">Success Stories</h2>
+            <p class="section-subtitle" data-lang="stories-subtitle">
+                Real connections, beautiful beginnings - hear from couples who found love through our platform
+            </p>
+            
+            <div class="stories-grid">
+                <div class="story-card">
+                    <p class="story-quote" data-lang="story1-quote">
+                        "We found each other through wow2vows and immediately felt a deep connection. The platform's respect for our cultural values made the entire process beautiful and meaningful."
+                    </p>
+                    <p class="story-author" data-lang="story1-author">- Priya & Arjun, Chennai</p>
+                </div>
+                
+                <div class="story-card">
+                    <p class="story-quote" data-lang="story2-quote">
+                        "The family integration feature was perfect for us. Both our families could participate comfortably while we got to know each other at our own pace."
+                    </p>
+                    <p class="story-author" data-lang="story2-author">- Sneha & Vikram, Mumbai</p>
+                </div>
+                
+                <div class="story-card">
+                    <p class="story-quote" data-lang="story3-quote">
+                        "Privacy and verification gave us confidence. We knew we were connecting with genuine people who shared our values and aspirations."
+                    </p>
+                    <p class="story-author" data-lang="story3-author">- Anisha & Rohit, Bangalore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-lang="footer-about">About wow2vows</h3>
+                    <p data-lang="footer-about-desc">A locally hosted matrimony platform that prioritizes your privacy, cultural values, and meaningful connections.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-lang="footer-features">Features</h3>
+                    <ul>
+                        <li><a href="#" data-lang="footer-privacy">Privacy Protection</a></li>
+                        <li><a href="#" data-lang="footer-verification">Profile Verification</a></li>
+                        <li><a href="#" data-lang="footer-family">Family Integration</a></li>
+                        <li><a href="#" data-lang="footer-community">Community Matching</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-lang="footer-support">Support</h3>
+                    <ul>
+                        <li><a href="#" data-lang="footer-help">Help Center</a></li>
+                        <li><a href="#" data-lang="footer-contact-us">Contact Us</a></li>
+                        <li><a href="#" data-lang="footer-safety">Safety Tips</a></li>
+                        <li><a href="#" data-lang="footer-feedback">Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-lang="footer-legal">Legal</h3>
+                    <ul>
+                        <li><a href="#" data-lang="footer-privacy-policy">Privacy Policy</a></li>
+                        <li><a href="#" data-lang="footer-terms">Terms of Service</a></li>
+                        <li><a href="#" data-lang="footer-data">Data Protection</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-lang="footer-copyright">&copy; 2025 wow2vows. All rights reserved. Proudly hosted in India.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2 data-lang="login-title">Welcome Back</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail" data-lang="email">Email Address</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" data-lang="password">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-lang="login-submit">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px;">
+                <a href="#" data-lang="forgot-password">Forgot your password?</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2 data-lang="register-title">Start Your Journey</h2>
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="firstName" data-lang="first-name">First Name</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" data-lang="last-name">Last Name</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-lang="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone" data-lang="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="community" data-lang="community">Community</label>
+                    <select id="community" required>
+                        <option value="" data-lang="select-community">Select Community</option>
+                        <option value="tamil">Tamil</option>
+                        <option value="gujarati">Gujarati</option>
+                        <option value="punjabi">Punjabi</option>
+                        <option value="telugu">Telugu</option>
+                        <option value="marathi">Marathi</option>
+                        <option value="bengali">Bengali</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="city" data-lang="city">City</label>
+                    <input type="text" id="city" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-lang="register-submit">Create Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Language translations
+        const translations = {
+            en: {
+                "logo": "wow2vows",
+                "nav-home": "Home",
+                "nav-features": "Features",
+                "nav-how": "How It Works",
+                "nav-stories": "Success Stories",
+                "nav-contact": "Contact",
+                "login": "Login",
+                "register": "Register",
+                "hero-title": "Where Hearts Meet Heritage",
+                "hero-tagline": "Connecting Souls, Honoring Traditions",
+                "hero-intro": "At wow2vows, we believe that finding your life partner should honor both your values and your aspirations. Our community-centered platform brings together modern technology with time-tested traditions, creating a trusted space where families and individuals can connect authentically.",
+                "hero-cta": "Begin Your Journey",
+                "stat-members": "Verified Members",
+                "stat-success": "Success Stories",
+                "stat-communities": "Communities Served",
+                "stat-locations": "Cities & Towns",
+                "features-title": "Why Choose wow2vows?",
+                "features-subtitle": "Experience the perfect blend of tradition and technology with features designed for modern Indian families",
+                "feature1-title": "Privacy-First Local Hosting",
+                "feature1-desc": "Your data stays in India with complete sovereignty. No international data transfers, maximum privacy protection.",
+                "feature2-title": "Family Circle Integration",
+                "feature2-desc": "Dedicated family dashboard with appropriate permissions. Healthy boundaries between individual and family involvement.",
+                "feature3-title": "Community-Based Matching",
+                "feature3-desc": "Advanced filters for regional preferences, language, cultural practices, and community backgrounds.",
+                "feature4-title": "Multi-Level Verification",
+                "feature4-desc": "Comprehensive verification including ID, education, employment, and optional family references for trust.",
+                "feature5-title": "Secure Communication",
+                "feature5-desc": "End-to-end encrypted messaging with regional language support and structured interest expression.",
+                "feature6-title": "Modern Lifestyle Matching",
+                "feature6-desc": "Smart compatibility considering career goals, lifestyle, travel aspirations, and personal interests.",
+                "feature7-title": "Multi-Language Support",
+                "feature7-desc": "Full platform in Hindi, English, and regional languages with culturally appropriate content.",
+                "feature8-title": "Mobile-First Design",
+                "feature8-desc": "Intuitive interface optimized for smartphones with offline browsing and instant notifications.",
+                "how-title": "How It Works",
+                "how-subtitle": "Simple, respectful, and effective - find your perfect match in just four steps",
+                "step1-title": "Create Your Profile",
+                "step1-desc": "Share your story, values, and aspirations. Upload verified documents for trust and authenticity.",
+                "step2-title": "Get Verified",
+                "step2-desc": "Complete our multi-step verification process including ID, education, and employment confirmation.",
+                "step3-title": "Browse & Connect",
+                "step3-desc": "Use advanced filters to find compatible matches. Send interests and start meaningful conversations.",
+                "step4-title": "Meet Your Match",
+                "step4-desc": "Take your time getting to know each other with family involvement as desired. Begin your beautiful journey together.",
+                "stories-title": "Success Stories",
+                "stories-subtitle": "Real connections, beautiful beginnings - hear from couples who found love through our platform",
+                "story1-quote": "We found each other through wow2vows and immediately felt a deep connection. The platform's respect for our cultural values made the entire process beautiful and meaningful.",
+                "story1-author": "- Priya & Arjun, Chennai",
+                "story2-quote": "The family integration feature was perfect for us. Both our families could participate comfortably while we got to know each other at our own pace.",
+                "story2-author": "- Sneha & Vikram, Mumbai",
+                "story3-quote": "Privacy and verification gave us confidence. We knew we were connecting with genuine people who shared our values and aspirations.",
+                "story3-author": "- Anisha & Rohit, Bangalore",
+                "footer-about": "About wow2vows",
+                "footer-about-desc": "A locally hosted matrimony platform that prioritizes your privacy, cultural values, and meaningful connections.",
+                "footer-features": "Features",
+                "footer-privacy": "Privacy Protection",
+                "footer-verification": "Profile Verification",
+                "footer-family": "Family Integration",
+                "footer-community": "Community Matching",
+                "footer-support": "Support",
+                "footer-help": "Help Center",
+                "footer-contact-us": "Contact Us",
+                "footer-safety": "Safety Tips",
+                "footer-feedback": "Feedback",
+                "footer-legal": "Legal",
+                "footer-privacy-policy": "Privacy Policy",
+                "footer-terms": "Terms of Service",
+                "footer-data": "Data Protection",
+                "footer-copyright": "© 2025 wow2vows. All rights reserved. Proudly hosted in India.",
+                "login-title": "Welcome Back",
+                "email": "Email Address",
+                "password": "Password",
+                "login-submit": "Login",
+                "forgot-password": "Forgot your password?",
+                "register-title": "Start Your Journey",
+                "first-name": "First Name",
+                "last-name": "Last Name",
+                "phone": "Phone Number",
+                "community": "Community",
+                "select-community": "Select Community",
+                "city": "City",
+                "register-submit": "Create Profile"
+            },
+            hi: {
+                "logo": "संस्कार कनेक्ट",
+                "nav-home": "होम",
+                "nav-features": "सुविधाएं",
+                "nav-how": "कैसे काम करता है",
+                "nav-stories": "सफलता की कहानियां",
+                "nav-contact": "संपर्क",
+                "login": "लॉगिन",
+                "register": "पंजीकरण",
+                "hero-title": "जहां दिल मिलते हैं विरासत से",
+                "hero-tagline": "आत्माओं को जोड़ना, परंपराओं का सम्मान",
+                "hero-intro": "संस्कार कनेक्ट में, हम मानते हैं कि अपना जीवन साथी खोजना आपके मूल्यों और आकांक्षाओं दोनों का सम्मान करना चाहिए।",
+                "hero-cta": "अपनी यात्रा शुरू करें",
+                "stat-members": "सत्यापित सदस्य",
+                "stat-success": "सफलता की कहानियां",
+                "stat-communities": "समुदायों की सेवा",
+                "stat-locations": "शहर और कस्बे"
+            }
+        };
+
+        let currentLang = 'en';
+        let userProfiles = [];
+        let currentUser = null;
+
+        // Language functions
+        function changeLanguage() {
+            const select = document.getElementById('languageSelect');
+            currentLang = select.value;
+            updatePageLanguage();
+        }
+
+        function updatePageLanguage() {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Authentication functions
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation (in real app, this would be server-side)
+            const user = userProfiles.find(u => u.email === email);
+            if (user) {
+                currentUser = user;
+                showSuccess('Welcome back! Redirecting to your dashboard...');
+                setTimeout(() => {
+                    closeModal('loginModal');
+                    updateAuthUI();
+                }, 2000);
+            } else {
+                alert('Invalid credentials. Please try again or register for a new account.');
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                community: document.getElementById('community').value,
+                city: document.getElementById('city').value,
+                registeredAt: new Date().toLocaleDateString()
+            };
+            
+            // Check if email already exists
+            if (userProfiles.find(u => u.email === formData.email)) {
+                alert('Email already registered. Please login or use a different email.');
+                return;
+            }
+            
+            userProfiles.push(formData);
+            currentUser = formData;
+            
+            showSuccess('Registration successful! Welcome to wow2vows. Please complete your profile verification.');
+            
+            setTimeout(() => {
+                closeModal('registerModal');
+                updateAuthUI();
+                showDashboard();
+            }, 2000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+            
+            const form = event.target.closest('form');
+            form.insertBefore(successDiv, form.firstChild);
+            
+            setTimeout(() => {
+                if (successDiv.parentNode) {
+                    successDiv.remove();
+                }
+            }, 3000);
+        }
+
+        function updateAuthUI() {
+            const authButtons = document.querySelector('.auth-buttons');
+            if (currentUser) {
+                authButtons.innerHTML = `
+                    <span style="margin-right: 15px;">Welcome, ${currentUser.firstName}</span>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                `;
+            } else {
+                authButtons.innerHTML = `
+                    <a href="#" class="btn btn-outline" onclick="openModal('loginModal')">Login</a>
+                    <a href="#" class="btn btn-primary" onclick="openModal('registerModal')">Register</a>
+                `;
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            updateAuthUI();
+            hideDashboard();
+        }
+
+        function showDashboard() {
+            // Create a simple dashboard view
+            const heroSection = document.querySelector('.hero');
+            heroSection.innerHTML = `
+                <div class="container">
+                    <h1>Welcome to Your Dashboard, ${currentUser.firstName}!</h1>
+                    <p class="tagline">Complete your profile to start connecting with potential matches</p>
+                    <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div class="feature-card">
+                            <h3>🏗️ Complete Profile</h3>
+                            <p>Add photos, preferences, and family details</p>
+                            <button class="btn btn-primary" style="margin-top: 15px;">Complete Now</button>
+                        </div>
+                        <div class="feature-card">
+                            <h3>📋 Verification Status</h3>
+                            <p>Pending: ID Proof, Education Certificate</p>
+                            <button class="btn btn-outline" style="margin-top: 15px;">Upload Documents</button>
+                        </div>
+                        <div class="feature-card">
+                            <h3>👥 Browse Matches</h3>
+                            <p>Discover compatible profiles in your community</p>
+                            <button class="btn btn-primary" style="margin-top: 15px;">View Matches</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function hideDashboard() {
+            // Restore original hero content
+            location.reload();
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Animate statistics on scroll
+        function animateStats() {
+            const stats = [
+                { element: 'membersCount', target: 10000, suffix: '+' },
+                { element: 'successCount', target: 500, suffix: '+' },
+                { element: 'communitiesCount', target: 25, suffix: '+' },
+                { element: 'locationsCount', target: 100, suffix: '+' }
+            ];
+
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.element);
+                let current = 0;
+                const increment = stat.target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= stat.target) {
+                        current = stat.target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current).toLocaleString() + stat.suffix;
+                }, 50);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stats')) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe stats section for animation
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+
+            // Add floating animation to feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Simulate some existing user data for demo
+            userProfiles.push(
+                {
+                    firstName: 'Demo',
+                    lastName: 'User',
+                    email: 'demo@example.com',
+                    community: 'tamil',
+                    city: 'Chennai'
+                }
+            );
+        });
+
+        // Add typing effect to tagline
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Enhanced form validation
+        function validateForm(form) {
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#ff6b6b';
+                    isValid = false;
+                } else {
+                    input.style.borderColor = '#ddd';
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Add event listeners for form validation
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                if (!validateForm(this)) {
+                    e.preventDefault();
+                    alert('Please fill all required fields.');
+                }
+            });
+        });
+
+        // Mobile menu toggle (for smaller screens)
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile-open');
+        }
+
+        // Add mobile menu styles
+        const mobileStyles = `
+            @media (max-width: 768px) {
+                .nav-links.mobile-open {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: rgba(255,107,107,0.95);
+                    padding: 20px;
+                    gap: 15px;
+                }
+                
+                .hamburger {
+                    display: block;
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+            }
+            
+            .hamburger {
+                display: none;
+            }
+        `;
+        
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = mobileStyles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
